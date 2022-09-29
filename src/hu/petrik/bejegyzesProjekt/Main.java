@@ -24,12 +24,13 @@ public class Main {
         }catch (Exception e){
             System.err.println("Nem egész számot adtál meg!");
         }
+        sc.nextLine();
 
         for (int i = 0; i < db;i++){
             System.out.println("Add meg a nevedet!");
-            String nev = sc.next();
+            String nev = sc.nextLine();
             System.out.println("Add meg a tratalmat!");
-            String tartalom = sc.next();
+            String tartalom = sc.nextLine();
             Bejegyzes b3 = new Bejegyzes(nev,tartalom);
             bejegyzesList.getBejegyzesek().add(b3);
         }
@@ -48,6 +49,12 @@ public class Main {
             int rnd = new Random().nextInt(bejegyzesekSzama-1+1)+1;
             bejegyzesList.getBejegyzesek().get(rnd-1).like();
         }
+
+        System.out.println("Módositsd a 2. szöveg tartalmát!");
+        String ujTartalom = sc.nextLine();
+
+
+        bejegyzesList.getBejegyzesek().get(1).setTartalom(ujTartalom);
 
         System.out.println(bejegyzesList);
 
