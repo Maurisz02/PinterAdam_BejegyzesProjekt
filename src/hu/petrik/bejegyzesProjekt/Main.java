@@ -1,8 +1,8 @@
 package hu.petrik.bejegyzesProjekt;
 
 import java.io.IOException;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -60,12 +60,16 @@ public class Main {
 
         int max = 0;
         boolean isBigger = false;
+        int kevesSzamlalo = 0;
         for (int i = 0; i < bejegyzesList.getBejegyzesek().size();i++){
             if (bejegyzesList.getBejegyzesek().get(i).getLikeok()>max){
                 max = bejegyzesList.getBejegyzesek().get(i).getLikeok();
             }
             if (bejegyzesList.getBejegyzesek().get(i).getLikeok()>35){
                 isBigger = true;
+            }
+            if (bejegyzesList.getBejegyzesek().get(i).getLikeok()<15){
+                kevesSzamlalo++;
             }
         }
 
@@ -77,6 +81,11 @@ public class Main {
             System.out.println("Nincs olyan bejegyzés, amely 35-nél több likeot kapott");
         }
 
+        System.out.println(kevesSzamlalo+" olyan bejegyzés van ami 15-nél kevesebb likeot kapott");
 
+        bejegyzesList.getBejegyzesek().sort(Comparator.comparing(Bejegyzes::getLikeok));
+        System.out.println("Bejegyzesek lista visszafele:");
+        System.out.println("");
+        System.out.println(bejegyzesList);
     }
 }

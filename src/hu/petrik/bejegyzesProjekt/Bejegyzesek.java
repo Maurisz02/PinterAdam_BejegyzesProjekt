@@ -30,9 +30,11 @@ public class Bejegyzesek {
         fr.close();
     }
 
+
     public List<Bejegyzes> getBejegyzesek(){
         return bejegyzesek;
     }
+
 
     @Override
     public String toString() {
