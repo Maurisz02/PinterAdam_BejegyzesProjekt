@@ -49,6 +49,6 @@ public class Bejegyzes {
 
     @Override
     public String toString() {
-        return String.format("%s-%d-%s\nSzerkesztve: %s\n%s",this.szerzo,this.getLikeok(),this.getLetrejott(),this.getSzerkesztve(),this.getTartalom());
+        return String.format("%s-%d-%s\nSzerkesztve: %s\n%s\n",this.szerzo,this.getLikeok(),this.getLetrejott(),this.getSzerkesztve(),this.getTartalom());
     }
 }
