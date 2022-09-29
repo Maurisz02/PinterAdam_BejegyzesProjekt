@@ -58,5 +58,25 @@ public class Main {
 
         System.out.println(bejegyzesList);
 
+        int max = 0;
+        boolean isBigger = false;
+        for (int i = 0; i < bejegyzesList.getBejegyzesek().size();i++){
+            if (bejegyzesList.getBejegyzesek().get(i).getLikeok()>max){
+                max = bejegyzesList.getBejegyzesek().get(i).getLikeok();
+            }
+            if (bejegyzesList.getBejegyzesek().get(i).getLikeok()>35){
+                isBigger = true;
+            }
+        }
+
+        System.out.println("Legkedveltebb bejegyzés like száma: "+max);
+
+        if (isBigger){
+            System.out.println("Van olyan bejegyzés, amely 35-nél több likeot kapott");
+        }else{
+            System.out.println("Nincs olyan bejegyzés, amely 35-nél több likeot kapott");
+        }
+
+
     }
 }
