@@ -8,6 +8,7 @@ public class Bejegyzes {
     private int likeok;
     private LocalDate letrejott;
     private LocalDate szerkesztve;
+    private boolean isChanged;
 
     Bejegyzes(String szerzo, String tartalom){
         this.szerzo = szerzo;
@@ -15,6 +16,7 @@ public class Bejegyzes {
         this.likeok = 0;
         this.letrejott = LocalDate.now();
         this.szerkesztve = LocalDate.now();
+        this.isChanged = false;
     }
 
     public String getSzerzo(){
@@ -28,6 +30,7 @@ public class Bejegyzes {
     public void setTartalom(String tartalom){
 
         this.szerkesztve = LocalDate.now();
+        this.isChanged = true;
         this.tartalom = tartalom;
     }
 
@@ -47,9 +50,18 @@ public class Bejegyzes {
         this.likeok += 1;
     }
 
+    public boolean getIsChanged(){
+        return this.isChanged;
+    }
+
 
     @Override
     public String toString() {
-        return String.format("%s-%d-%s\nSzerkesztve: %s\n%s\n",this.szerzo,this.getLikeok(),this.getLetrejott(),this.getSzerkesztve(),this.getTartalom());
+        if (this.getIsChanged()){
+            return String.format("%s-%d-%s\nSzerkesztve: %s\n%s\n",this.szerzo,this.getLikeok(),this.getLetrejott(),this.getSzerkesztve(),this.getTartalom());
+        }else{
+            return String.format("%s-%d-%s\n%s\n",this.szerzo,this.getLikeok(),this.getLetrejott(),this.getTartalom());
+        }
+
     }
 }
