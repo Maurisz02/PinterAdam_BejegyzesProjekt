@@ -1,6 +1,7 @@
 package hu.petrik.bejegyzesProjekt;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -40,6 +41,12 @@ public class Main {
             bejegyzesList.getBejegyzesek().addAll(bejegyzesekLista1.getBejegyzesek());
         }catch (IOException e){
             System.err.println("Ismeretlen hiba történt a fájl beolvasás folyamán");
+        }
+
+        for (int i = 0; i < bejegyzesList.getBejegyzesek().size()*20;i++){
+            int bejegyzesekSzama = bejegyzesList.getBejegyzesek().size();
+            int rnd = new Random().nextInt(bejegyzesekSzama-1+1)+1;
+            bejegyzesList.getBejegyzesek().get(rnd-1).like();
         }
 
         System.out.println(bejegyzesList);
