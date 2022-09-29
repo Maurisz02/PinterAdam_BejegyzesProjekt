@@ -1,8 +1,8 @@
 package hu.petrik.bejegyzesProjekt;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
 
@@ -87,5 +87,19 @@ public class Main {
         System.out.println("Bejegyzesek lista visszafele:");
         System.out.println("");
         System.out.println(bejegyzesList);
+
+        try {
+            FileWriter myWriter = new FileWriter("sortedBejegyzesek.txt");
+            for (int i = 0; i< bejegyzesList.getBejegyzesek().size();i++){
+                myWriter.write(String.valueOf(bejegyzesList.getBejegyzesek().get(i)));
+                myWriter.write("\n");
+            }
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
     }
 }
